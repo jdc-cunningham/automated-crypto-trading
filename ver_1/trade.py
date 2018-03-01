@@ -99,5 +99,6 @@ def trade (amount,from_coin,to_coin):
         print make_deposit['status']
     else:
         print ("can't afford trade: " + str(amount) + " " + pair)
-
-trade(20,'ltc',coin_symbol['digibyte'])
+        
+# sample use
+# trade(20,'ltc',coin_symbol['digibyte'])
