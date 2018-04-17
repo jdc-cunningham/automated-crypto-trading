@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        let gdaxSocket = new WebSocket("wss://ws-feed.gdax.com"),
+            subscribeJSON = {
+                "type": "subscribe",
+                "product_ids": [
+                    "ETH-USD",
+                    "ETH-EUR"
+                ],
+                "channels": [
+                    // "level2",
+                    // "heartbeat",
+                    // {
+                    //     "name": "ticker",
+                    //     "product_ids": [
+                    //         "ETH-BTC",
+                    //         "ETH-USD"
+                    //     ]
+                    // }
+                    "ticker"
+                ]
+            };
+
+        gdaxSocket.onopen = function (event) {
+            gdaxSocket.send(JSON.stringify(subscribeJSON));
+        }
+
+        gdaxSocket.onmessage = function (event) {
+            console.log(event.data);
+            console.log('');
+        }
+
+        document.addEventListener('click', function() {
+            gdaxSocket.close();
+        });
+
+    </script>
+</body>
+</html>
