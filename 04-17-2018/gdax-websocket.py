@@ -7,7 +7,7 @@ import pickle
 import ast
 import time
 
-ws = create_connection("wss://ws-feed.gdax.com")
+ws = create_connection("wss://ws-feed.pro.coinbase.com")
 
 ws_sub_obj = {}
 ws_sub_obj["type"] = "subscribe"
